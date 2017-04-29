@@ -5,18 +5,25 @@
     2. others disappear when a terrarium is clicked
 */
 
-const terrariums = Array.from(document.querySelectorAll('.terrarium'));
-let selectedTerrarium = [];
+var $hello = 'hello';
 
 
-terrariums.map((terrarium) => {
-  terrarium.onclick = () => { 
-    terrarium.classList.toggle("selected")
-  }
-}).filter((terrarium) => {
-  return terrarium.classList.contains("selected");
-})
+$('.terrarium').each(function(){  
+  $(this).click(function(){
+    $(this).addClass('selected');
+    $(this).siblings().hide();
+  });
+});
 
+// console.log($('.terrarium'));
+
+// const terrariums = Array.from(document.querySelectorAll('.terrarium'));
+
+// terrariums.map((terrarium) => {
+//   terrarium.on('click', () => { 
+//     terrarium.addClass("selected")
+//   }) 
+// })
 
 
 
