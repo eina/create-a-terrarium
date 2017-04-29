@@ -1,0 +1,11 @@
+{
+  "name": "terrarium-creative-coding",
+  "version": "1.0.0",
+  "description": "drag and drop terrarium for creative coding club",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eina Onting",
+  "license": "ISC"
+}
