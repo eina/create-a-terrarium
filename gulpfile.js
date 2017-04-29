@@ -3,6 +3,8 @@ var gulp = require('gulp'),
   rename = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
+var rollup = require('gulp-rollup');
+var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var minifycss = require('gulp-cssnano');
 var sass = require('gulp-sass');
@@ -46,7 +48,15 @@ gulp.task('scripts', function () {
         this.emit('end');
       }
     }))
-    .pipe(concat('main.js'))
+    .pipe(rollup({
+      entry: './src/scripts/scripts.js',
+      format: 'iife',
+      plugins: [
+        require('rollup-plugin-babel')({
+          presets: [['es2015', { modules: false }]]
+        })
+      ]
+    }))    
     .pipe(gulp.dest('dist/scripts'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
@@ -65,8 +75,9 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/img'));
 })
 
-gulp.task('default', ['browser-sync', 'images'], function () {
+gulp.task('default', ['images','browser-sync'], function () {
   gulp.watch("./src/styles/**/*.scss", ['styles']);
   gulp.watch("./src/scripts/**/*.js", ['scripts']);
+  gulp.watch("./src/*.html", ['minifyhtml']);
   gulp.watch("./dist/*.html", ['bs-reload']);
 });

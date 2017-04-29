@@ -1,0 +1,40 @@
+body {
+  // background: palegoldenrod;
+}
+
+.terrarium {  
+  display: inline-block;
+  width: 320px;
+  max-height: 320px;
+  margin-right: 10em;
+  position: relative;  
+  // overflow: hidden;
+
+  img {
+    opacity: 0.7;
+    width: 100%;
+    height: auto;
+  }
+
+  &:hover, &:focus {
+    width: 20%;
+    img {
+      opacity: 1;      
+    }
+  }  
+
+  .soil {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+/* selection controls */
+ 
+ .selected {
+  //  width: 60%;
+   img {
+    opacity: 1;
+  }
+ } 
